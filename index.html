@@ -8,7 +8,7 @@
 <!--<![endif]-->
 
 <head>
-	<meta name="viewport" content="width = 1050, user-scalable = no" />
+	<meta name="viewport" content="width=1050">
 	<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
 	<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
 </head>
@@ -64,6 +64,7 @@
 		}
 
 		function loadApp() {
+			var isMobile = /Mobi|Android/i.test(navigator.userAgent);
 			var flipbook = $('.flipbook');
 			// Check if the CSS was already loaded
 			if (flipbook.width() == 0 || flipbook.height() == 0) {
@@ -72,12 +73,13 @@
 			}
 			// Create the flipbook
 			flipbook.turn({
+				display: "double",
 				width: 1000,
 				height: 800,
 				elevation: 50,
 				gradients: true,
 				autoCenter: true,
-				pages: 18,
+				pages: 16,
 				when: {
 					missing: function (e, pages) {
 						for (var i = 0; i < pages.length; i++) {
@@ -86,6 +88,12 @@
 					}
 				},
 			});
+			// Mobile
+			if (isMobile) {
+				flipbook.turn('display', 'single');
+				flipbook.turn('size', 500, 800);
+				$("meta[name='viewport']").attr('content', 'width=550')
+			}
 			// Arrows
 			$(document).keydown(function (e) {
 				var previous = 37, next = 39;
