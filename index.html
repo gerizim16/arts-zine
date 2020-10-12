@@ -17,42 +17,52 @@
 	<div class="flipbook-viewport">
 		<div class="container">
 			<div class="flipbook">
-				<div class="hard">
+				<div>
 					<div class="book-content">
 						<h1>ARTS ZINE</h1>
-						<p>
-							navigation tips:
+						navigation tips:
 						<ul>
 							<li>drag from the corners</li>
 							<li>click the corners</li>
 							<li>use arrow keys</li>
 						</ul>
-						</p>
+						<footer>
+							Julianne Dapdap<br>
+							Virginia Garcia<br>
+							Dann Llabore<br>
+							Gerizim Villarante
+						</footer>
 					</div>
 				</div>
-				<div class="hard"></div>
-				<div>
-					<div class="book-content">
-						<h1>page 1</h1>
-					</div>
-				</div>
-				<div>page 1</div>
-				<div>page 1</div>
-				<div>page 1</div>
-				<div>page 1</div>
-				<div>page 1</div>
-				<div>page 1</div>
-				<div>page 1</div>
-				<div>page 1</div>
-				<div>page 1</div>
-				<div class="hard">(c) blabla</div>
-				<div class="hard"></div>
+				<!-- other pages are inserted here -->
+				<div class="p17"></div>
+				<div class="p18"></div>
 			</div>
 		</div>
 	</div>
 
 
 	<script type="text/javascript">
+		function loadPage(page) {
+			$.ajax({ url: 'pages/page' + page + '.html' }).done(
+				function (pageHtml) {
+					$('.flipbook .p' + page).html(pageHtml);
+				}
+			);
+		}
+
+		function addPage(page, book) {
+			var id, pages = book.turn('pages');
+			if (!book.turn('hasPage', page)) {
+				var element = $('<div />',
+					{}).
+					html('<div class="loader"></div>');
+				if (book.turn('addPage', element, page)) {
+					loadPage(page);
+				}
+			}
+		}
+
 		function loadApp() {
 			var flipbook = $('.flipbook');
 			// Check if the CSS was already loaded
@@ -66,7 +76,15 @@
 				height: 800,
 				elevation: 50,
 				gradients: true,
-				autoCenter: true
+				autoCenter: true,
+				pages: 18,
+				when: {
+					missing: function (e, pages) {
+						for (var i = 0; i < pages.length; i++) {
+							addPage(pages[i], $(this));
+						}
+					}
+				},
 			});
 			// Arrows
 			$(document).keydown(function (e) {
