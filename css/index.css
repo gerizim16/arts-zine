@@ -14,6 +14,10 @@ body{
 	padding:0;
 }
 
+img.round-border{
+	border-radius: 15px;
+}
+
 a{
 	color: inherit;
 }
@@ -70,6 +74,20 @@ h1 > span{
 
 .p8, .p9, .p10{
 	background-image: url('../pics/musicsheetbg.png');
+}
+
+.p11{
+	background-color: #f7e2d1 !important;
+}
+
+.p13{
+	background-color: #4879ad !important;
+	color: white;
+}
+
+.p14{
+	background-color: #272727 !important;
+	color: white;
 }
 
 .page-number{
