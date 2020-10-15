@@ -42,61 +42,12 @@ h1 > span{
 	font-size: 14px;
 }
 
-.p1{
-	background-image: url('../pics/bg1.jpg');
-}
-
-.p1 .book-content{
-	margin: 120px 70px;
-}
-
-.p1 .book-content footer{
-	bottom: 70px !important;
-	right: 70px !important;
-}
-
-.p2{
-	background-color: #fbfbfb !important;
-}
-
-.p3{
-	background-color: #432b19 !important;
-	color: #fbfbfb;
-}
-
-.p4{
-	background-image: url('../pics/bg4.jpg');
-}
-
-.p6{
-	background-color: #cee1f1 !important;
-}
-
-.p8, .p9, .p10{
-	background-image: url('../pics/musicsheetbg.png');
-}
-
-.p11{
-	background-color: #f7e2d1 !important;
-}
-
-.p13{
-	background-color: #4879ad !important;
-	color: white;
-}
-
-.p14{
-	background-color: #272727 !important;
-	color: white;
-}
-
 .page-number{
 	width:100%;
-	bottom:25px;
+	bottom:30px;
 	position:absolute;
 	display:block;
 	text-align: center;
-	line-height:30px;
 	font-size:11px;
 }
 
@@ -109,16 +60,23 @@ h1 > span{
 }
 
 .book-content{
-	margin: 40px 45px;
+	box-sizing: border-box;
+	background-size: cover;
+	background-position: center;
+	padding: 40px 45px;
+	display: flex;
+	flex-flow: column;
+	height: 100%;
 }
 
 .p1 .book-content footer, .book-content footer{
 	position: absolute;
+	font-size: 13px;
 	bottom: 30px;
 }
 
 .odd .book-content footer{
-	right: 50px;
+	right: 45px;
 	text-align: right;
 }
 
@@ -137,10 +95,6 @@ h1 > span{
 }
 
 .flipbook-viewport .container{
-	/* position:absolute;
-	top:50%;
-	left:50%;
-	margin:auto; */
 	display: -webkit-flexbox;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -151,11 +105,6 @@ h1 > span{
     align-items: center;
 	justify-content: center;
 	height: 100%;
-}
-
-.flipbook-viewport .flipbook{
-	/* left:-500px;
-	top:-400px; */
 }
 
 .flipbook-viewport .page{
